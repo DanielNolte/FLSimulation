@@ -33,14 +33,14 @@ def parse_arg():
     parser.add_argument('-tree_depth', type=int, default=4)
     parser.add_argument('-num_output', type=int, default=128) # only used for coupled routing functions   
     ## training settings
-    parser.add_argument('-trainCent', type=bool, default=False, help="Boolean to train centralized alt") 
-    parser.add_argument('-trainFed', type=bool, default=True, help="Boolean to train Federate model")
-    parser.add_argument('-evalCent', type=bool, default=False, help="Boolean to evaluate centralized alt")
-    parser.add_argument('-evalFed', type=bool, default=False, help="Boolean to evaluate Federate model")
+    parser.add_argument('-trainCent', action='store_true', default=False, help="Boolean to train centralized alt") 
+    parser.add_argument('-trainFed',  action='store_true', default=False, help="Boolean to train Federate model")
+    parser.add_argument('-evalCent', action='store_true', default=False, help="Boolean to evaluate centralized alt")
+    parser.add_argument('-evalFed',action='store_true', default=False, help="Boolean to evaluate Federate model")
     parser.add_argument('-batch_size', type=int, default=128)
     parser.add_argument('-eval_batch_size', type=int, default=128)
     parser.add_argument('-leaf_batch_size', type=int, default=128) 
-    parser.add_argument('-label_batch_size', type=int, default=4000)
+    parser.add_argument('-label_batch_size', type=int, default=40000)
     # random seed 
     parser.add_argument('-seed', type=int, default=2020)    
     parser.add_argument('-num_threads', type=int, default=0)
@@ -49,9 +49,6 @@ def parse_arg():
     parser.add_argument('-gpuid', type=int, default=0)
     parser.add_argument('-epochs', type=int, default=200)
     parser.add_argument('-eval', type=bool, default=True)
-    ##-----------------------------------------------------------------------##    
-    ## dataset settings
-    parser.add_argument('-dataset_name', type=str, default='NCI60Im')  
     ##-----------------------------------------------------------------------##    
     # Optimizer settings
     parser.add_argument('-optim_type', type=str, default='adam')
